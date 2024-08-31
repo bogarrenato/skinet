@@ -14,6 +14,8 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 });
 // service is going to live as long as the http request
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+// We dont know the exact type - typeof
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 // Middlewares
 var app = builder.Build();
 
