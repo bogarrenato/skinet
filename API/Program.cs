@@ -33,7 +33,8 @@ builder.Services.AddSingleton<ICartService, CartService>();
 builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<AppUser>()
     .AddEntityFrameworkStores<StoreContext>();
-
+// Stripe
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 
 
 // Middlewares
