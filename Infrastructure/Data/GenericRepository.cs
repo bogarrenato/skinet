@@ -13,10 +13,10 @@ public class GenericRepository<T>(StoreContext context) : IGenericRepository<T> 
 
     public async Task<int> CountAsync(ISpecification<T> spec)
     {
-       var query = context.Set<T>().AsQueryable();
-       query= spec.ApplyCriteria(query);
+        var query = context.Set<T>().AsQueryable();
+        query = spec.ApplyCriteria(query);
 
-       return await query.CountAsync();
+        return await query.CountAsync();
     }
 
     public bool Exists(int id)
@@ -59,11 +59,6 @@ public class GenericRepository<T>(StoreContext context) : IGenericRepository<T> 
     public void Remove(T entity)
     {
         context.Set<T>().Remove(entity);
-    }
-
-    public async Task<bool> SaveAllAsync()
-    {
-        return await context.SaveChangesAsync() > 0;
     }
 
     public void Update(T entity)
