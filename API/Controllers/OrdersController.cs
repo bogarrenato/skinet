@@ -15,17 +15,10 @@ namespace API.Controllers;
 [Authorize]
 public class OrdersController(ICartService cartService, IUnitOfWork unit) : BaseApiController
 {
-
-
-
-
     [HttpPost]
     public async Task<ActionResult<Order>> CreateOrder(CreateOrderDto orderDto)
     {
         Console.WriteLine(JsonSerializer.Serialize(orderDto.PaymentSummary));
-        // Console.WriteLine(JsonSerializer.Serialize(orderDto));
-        // Console.WriteLine("asd1!!!!!!1");
-        // _logger.LogInformation("OrderDto: {OrderDto}", JsonSerializer.Serialize(orderDto));
         var email = User.GetEmail();
 
         var cart = await cartService.GetCartAsync(orderDto.CartId);

@@ -4,7 +4,6 @@ namespace API.DTOs;
 
 public class OrderDto
 {
-
     public int Id { get; set; }
     public DateTime OrderDate { get; set; } = DateTime.UtcNow;
     public required string BuyerEmail { get; set; }
